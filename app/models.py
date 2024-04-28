@@ -1,6 +1,8 @@
 from uuid import uuid4
+import datetime
 
-from sqlalchemy import Column, String, select
+from sqlalchemy import Column, String, select, ForeignKey, func
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -35,3 +37,20 @@ class User(Base):
     @classmethod
     async def get_all(cls, db: AsyncSession):
         return (await db.execute(select(cls))).scalars().all()
+    
+
+ 
+class Models(Base):
+    __tablename__ = "models"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str]
+
+
+class ProcessedImages(Base):
+    __tablename__ = "processed_images"
+    id: Mapped[int] =  mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    model_id: Mapped[int] = mapped_column(ForeignKey("models.id"))
+    hesh_img: Mapped[str]
+    url_img: Mapped[str]
+    create_time: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
