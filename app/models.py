@@ -2,7 +2,7 @@ from uuid import uuid4
 import datetime
 
 from sqlalchemy import Column, String, select, ForeignKey, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -38,12 +38,21 @@ class User(Base):
     async def get_all(cls, db: AsyncSession):
         return (await db.execute(select(cls))).scalars().all()
     
+    processed_images: Mapped[list["ProcessedImages"]] = relationship (
+        back_populates="user"
+    )
+    
+    
 
  
 class Models(Base):
     __tablename__ = "models"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
+
+    processed_images: Mapped[list["ProcessedImages"]] = relationship (
+        back_populates="model"
+    )
 
 
 class ProcessedImages(Base):
@@ -54,3 +63,13 @@ class ProcessedImages(Base):
     hesh_img: Mapped[str]
     url_img: Mapped[str]
     create_time: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
+
+
+    user: Mapped[list["User"]] = relationship (
+        back_populates="processed_images"
+    )
+    model: Mapped[list["Models"]] = relationship (
+        back_populates="processed_images"
+    )
+
+   
