@@ -11,6 +11,7 @@ from app.services.database import Base
 class User(Base):
     __tablename__ = "users"
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    username: Mapped[str]
     email: Mapped[str]
     password_hash: Mapped[str]
 
@@ -33,6 +34,11 @@ class User(Base):
     @classmethod
     async def get_by_email(cls, db: AsyncSession, email: str):
         user = (await db.execute(select(cls).where(cls.email == email))).scalar()
+        return user
+
+    @classmethod
+    async def get_by_username(cls, db: AsyncSession, username: str):
+        user = (await db.execute(select(cls).where(cls.username == username))).scalar()
         return user
 
     @classmethod

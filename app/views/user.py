@@ -7,10 +7,11 @@ from app.utils import get_hashed_password
 
 from ..models import User as UserModel
 
-router = APIRouter(prefix="/user", tags=["user"])
+user_router = APIRouter(prefix="/user", tags=["user"])
 
 
 class UserSchemaBase(BaseModel):
+    username: str
     email: str 
     password: str
 
@@ -26,19 +27,19 @@ class UserSchema(UserSchemaBase):
         orm_mode = True
 
 
-@router.get("/get-user", response_model=UserSchema)
+@user_router.get("/get-user", response_model=UserSchema)
 async def get_user(id: str, db: AsyncSession = Depends(get_db)):
     user = await UserModel.get(db, id)
     return user
 
 
-@router.get("/get-users", response_model=list[UserSchema])
+@user_router.get("/get-users", response_model=list[UserSchema])
 async def get_users(db: AsyncSession = Depends(get_db)):
     users = await UserModel.get_all(db)
     return users
 
 
-@router.post("/create-user", response_model=UserSchema)
+@user_router.post("/create-user", response_model=UserSchema)
 async def create_user(user: UserSchemaCreate, db: AsyncSession = Depends(get_db)):
     user_db = await UserModel.get_by_email(db, user.email)
     if user_db is not None:
