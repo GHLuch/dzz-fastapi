@@ -1,8 +1,8 @@
 import uuid
 
-from sqlalchemy import Column, String, select
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, NoResultFound
-from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy.orm import mapped_column, Mapped, query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.database import Base
@@ -29,6 +29,11 @@ class User(Base):
         except NoResultFound:
             return None
         return transaction
+
+    @classmethod
+    async def get_by_email(cls, db: AsyncSession, email: str):
+        user = (await db.execute(select(cls).where(cls.email == email))).scalar()
+        return user
 
     @classmethod
     async def get_all(cls, db: AsyncSession):
