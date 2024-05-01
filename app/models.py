@@ -1,7 +1,8 @@
-from uuid import uuid4
+import uuid
 
-from sqlalchemy import Column, String, select
+from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError, NoResultFound
+from sqlalchemy.orm import mapped_column, Mapped, query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.database import Base
@@ -9,16 +10,14 @@ from app.services.database import Base
 
 class User(Base):
     __tablename__ = "users"
-    id = Column(String, primary_key=True)
-    email = Column(String, unique=True, nullable=False)
-    full_name = Column(String, nullable=False)
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    username: Mapped[str]
+    email: Mapped[str]
+    password_hash: Mapped[str]
 
     @classmethod
-    async def create(cls, db: AsyncSession, id=None, **kwargs):
-        if not id:
-            id = uuid4().hex
-
-        transaction = cls(id=id, **kwargs)
+    async def create(cls, db: AsyncSession, **kwargs):
+        transaction = cls(**kwargs)
         db.add(transaction)
         await db.commit()
         await db.refresh(transaction)
@@ -31,6 +30,16 @@ class User(Base):
         except NoResultFound:
             return None
         return transaction
+
+    @classmethod
+    async def get_by_email(cls, db: AsyncSession, email: str):
+        user = (await db.execute(select(cls).where(cls.email == email))).scalar()
+        return user
+
+    @classmethod
+    async def get_by_username(cls, db: AsyncSession, username: str):
+        user = (await db.execute(select(cls).where(cls.username == username))).scalar()
+        return user
 
     @classmethod
     async def get_all(cls, db: AsyncSession):

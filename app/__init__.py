@@ -19,7 +19,8 @@ def init_app(init_db=True):
 
     server = FastAPI(title="FastAPI server", lifespan=lifespan)
 
-    from app.views.user import router as user_router
+    from app.views.user import user_router
+    from app.views.login import user_router
 
     server.include_router(user_router, prefix="/api", tags=["user"])
 
