@@ -1,7 +1,8 @@
-from uuid import uuid4
+import uuid
 
 from sqlalchemy import Column, String, select
 from sqlalchemy.exc import IntegrityError, NoResultFound
+from sqlalchemy.orm import mapped_column, Mapped
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.database import Base
@@ -9,15 +10,12 @@ from app.services.database import Base
 
 class User(Base):
     __tablename__ = "users"
-    id = Column(String, primary_key=True)
-    email = Column(String, unique=True, nullable=False)
-    full_name = Column(String, nullable=False)
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    email: Mapped[str]
+    password_hash: Mapped[str]
 
     @classmethod
-    async def create(cls, db: AsyncSession, id=None, **kwargs):
-        if not id:
-            id = uuid4().hex
-
+    async def create(cls, db: AsyncSession, **kwargs):
         transaction = cls(id=id, **kwargs)
         db.add(transaction)
         await db.commit()
