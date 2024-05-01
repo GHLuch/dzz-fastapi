@@ -19,3 +19,11 @@ class UserSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+class AIModel(BaseModel):
+    id: int
+    name: str
+
+
+class ModelList(BaseModel):
+    models: list[AIModel]

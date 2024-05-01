@@ -21,7 +21,9 @@ def init_app(init_db=True):
 
     from app.views.user import user_router
     from app.views.login import user_router
+    from app.views.model import model_router
 
     server.include_router(user_router, prefix="/api", tags=["user"])
+    server.include_router(model_router, prefix="/api", tags=["model"])
 
     return server

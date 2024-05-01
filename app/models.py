@@ -59,6 +59,11 @@ class Models(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
 
+    @classmethod
+    async def get_all(cls, db: AsyncSession):
+        result = await db.execute(select(cls))
+        return result.scalars().all()
+
     processed_images: Mapped[list["ProcessedImages"]] = relationship(
         back_populates="model"
     )
