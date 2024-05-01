@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.orm import mapped_column, Mapped, query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -17,7 +17,7 @@ class User(Base):
 
     @classmethod
     async def create(cls, db: AsyncSession, **kwargs):
-        transaction = cls(id=id, **kwargs)
+        transaction = cls(**kwargs)
         db.add(transaction)
         await db.commit()
         await db.refresh(transaction)

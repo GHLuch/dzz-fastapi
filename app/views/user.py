@@ -1,3 +1,5 @@
+import uuid
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,8 +22,11 @@ class UserSchemaCreate(UserSchemaBase):
     pass
 
 
-class UserSchema(UserSchemaBase):
-    id: str
+class UserSchema(BaseModel):
+    id: uuid.UUID
+    username: str
+    email: str
+    
 
     class Config:
         orm_mode = True
@@ -44,7 +49,12 @@ async def create_user(user: UserSchemaCreate, db: AsyncSession = Depends(get_db)
     user_db = await UserModel.get_by_email(db, user.email)
     if user_db is not None:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="User already exists for this email")
+
+    user_db = await UserModel.get_by_username(db, user.username)
+    if user_db is not None:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="User already exists for this username")
     user_for_db = {
+        "username": user.username,
         "email": user.email,
         "password_hash": get_hashed_password(user.password)
     }
