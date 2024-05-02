@@ -72,8 +72,8 @@ class Models(Base):
 class ProcessedImages(Base):
     __tablename__ = "processed_images"
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    model_id: Mapped[int] = mapped_column(ForeignKey("models.id"))
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"))
+    model_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("models.id"))
     hesh_img: Mapped[str]
     url_img: Mapped[str]
     create_time: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
