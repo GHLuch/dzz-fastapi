@@ -35,7 +35,7 @@ class ProcessedImagesSchema(BaseModel):
     user_id: int
     model_id: int
     hesh_img: str
-    url_img: int
+    url_img: str
     create_time: datetime.datetime
 
 class ProcessedImagesList(BaseModel):
