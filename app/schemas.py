@@ -1,5 +1,6 @@
 import uuid
 from pydantic import BaseModel
+import datetime
 
 class UserSchemaBase(BaseModel):
     username: str
@@ -21,9 +22,21 @@ class UserSchema(BaseModel):
         orm_mode = True
 
 class AIModel(BaseModel):
-    id: int
+    id: uuid.UUID
     name: str
 
 
 class ModelList(BaseModel):
     models: list[AIModel]
+
+
+class ProcessedImagesSchema(BaseModel):
+    id: uuid.UUID
+    user_id: int
+    model_id: int
+    hesh_img: str
+    url_img: int
+    create_time: datetime.datetime
+
+class ProcessedImagesList(BaseModel):
+    pims: list[ProcessedImagesSchema]

@@ -78,5 +78,10 @@ class ProcessedImages(Base):
     url_img: Mapped[str]
     create_time: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
 
+    @classmethod
+    async def get_by_user_id(cls, db: AsyncSession, user_id: int):
+        result = await db.execute(select(cls).where(cls.user_id == user_id))
+        return result.scalar()
+
     user: Mapped[list["User"]] = relationship(back_populates="processed_images")
     model: Mapped[list["Models"]] = relationship(back_populates="processed_images")
