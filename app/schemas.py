@@ -36,13 +36,13 @@ class ModelSchema(BaseModel):
         orm_mode = True
 
 class ModelList(BaseModel):
-    models: list[AIModel]
+    models: list[ModelSchema]
 
 
 class ProcessedImagesSchema(BaseModel):
     id: uuid.UUID
-    user_id: int
-    model_id: int
+    user_id: uuid.UUID
+    model_id: uuid.UUID
     hesh_img: str
     url_img: str
     create_time: datetime.datetime
