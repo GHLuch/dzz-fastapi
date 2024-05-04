@@ -19,7 +19,7 @@ async def get_models(db: AsyncSession = Depends(get_db), check_user: UserModel =
             check_user
         )
     models = await Models.get_all(db)
-    return {"models": models}
+    return {"models": [ModelSchema.model_validate(model) for model in models]}
 
 
 @model_router.get("/get-pims", response_model=ProcessedImagesList)
@@ -29,4 +29,4 @@ async def get_pims(user_id: uuid.UUID, db: AsyncSession = Depends(get_db), check
             check_user
         )
     pims = await ProcessedImages.get_by_user_id(db,user_id)
-    return {"pims": pims}
+    return {"pims": [ProcessedImagesSchema.model_validate(pim) for pim in pims]}
