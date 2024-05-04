@@ -56,8 +56,13 @@ class User(Base):
 
 class Models(Base):
     __tablename__ = "models"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     name: Mapped[str]
+
+    @classmethod
+    async def get_all(cls, db: AsyncSession):
+        result = await db.execute(select(cls))
+        return result.scalars().all()
 
     processed_images: Mapped[list["ProcessedImages"]] = relationship(
         back_populates="model"
@@ -66,12 +71,17 @@ class Models(Base):
 
 class ProcessedImages(Base):
     __tablename__ = "processed_images"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    model_id: Mapped[int] = mapped_column(ForeignKey("models.id"))
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"))
+    model_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("models.id"))
     hesh_img: Mapped[str]
     url_img: Mapped[str]
     create_time: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
+
+    @classmethod
+    async def get_by_user_id(cls, db: AsyncSession, user_id: uuid.UUID):
+        result = await db.execute(select(cls).where(cls.user_id == user_id))
+        return result.scalars().all()
 
     user: Mapped[list["User"]] = relationship(back_populates="processed_images")
     model: Mapped[list["Models"]] = relationship(back_populates="processed_images")
