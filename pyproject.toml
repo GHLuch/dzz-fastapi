@@ -7,13 +7,12 @@ authors = ["Guilherme Caminha <gpkc@cin.ufpe.br>"]
 [tool.poetry.dependencies]
 python = "^3.11"
 
-sqlalchemy = {extras = ["asyncio"], version = "^2.0.7"}
-uvicorn = "^0.21.1"
-fastapi = "^0.94.1"
 asyncpg = "^0.27.0"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-multipart = "^0.0.9"
+fastapi = {extras = ["all"], version = "^0.111.0"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.29"}
 
 [tool.poetry.group.dev.dependencies]
 alembic = "^1.10.2"
