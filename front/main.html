@@ -60,6 +60,24 @@
             cursor: pointer;
         }
 
+        .anim-bg-gradient {
+            background: linear-gradient(84.29deg, #FC466B -22.08%, #3F5EFB 97.7%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            transition: background-position .5s;
+            border: 0;
+            padding: 20px 101px;
+            color: white;
+            font-size: 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 55px;
+        }
+
+        .anim-bg-gradient:hover {
+            background-position: 0 0;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -67,7 +85,7 @@
         .column {
             float: left;
             width: 40%;
-            height: 300px;
+            height: 400px;
 
         }
 
@@ -92,13 +110,13 @@
 </header>
 
 <div class="row">
-    <div class="column" style="background-color:#aaa; margin-left: 50px;">
-        <p style="font-size: 80px;">GYM</p>
-        <p style="font-size: 20px;">Мы специализируемся на обнаружении техники на аэрофотоснимках промышленных объектов, применяя передовые методы обработки изображений и искусственный интеллект </p>
+    <div class="column" style="margin-left: 50px;margin-right: 27px;">
+        <p style="font-size: 80px; margin-top: 162px;">GYM</p>
+        <p style="font-size: 20px; margin-top: 55px;">Мы специализируемся на обнаружении техники на аэрофотоснимках промышленных объектов, применяя передовые методы обработки изображений и искусственный интеллект.</p>
+        <p><button class="reset anim-bg-gradient">Попробовать</button></p>
     </div>
-    <div class="column" style="background-color:#bbb;">
-        <h2>Column 2</h2>
-        <p>Some text..</p>
+    <div class="column" style="margin-right: 50px;">
+        <img src="img.png" alt="img" style="width:120%">
     </div>
 </div>
 
