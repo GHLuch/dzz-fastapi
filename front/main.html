@@ -25,7 +25,6 @@
             height: 100px;
             margin:0 50px 50px;
             border-radius: 0 0 30px 30px;
-
         }
 
         .logo {
@@ -82,16 +81,44 @@
             box-sizing: border-box;
         }
 
-        .column {
 
-            height: 400px;
-
-        }
 
         .row:after {
             display: table;
             clear: both;
         }
+
+
+
+        .example-1 .form-group{
+            padding:1em;margin:1em
+        }
+        .example-1 input[type=file]{
+            outline:0;
+            opacity:0;
+            pointer-events:none;
+            user-select:none
+        }
+        .example-1 .label{
+            width:718px;
+            height:426px;
+            border:2px dashed white;
+            border-radius:50px;
+            display:block;
+            transition:border 300ms ease;
+            cursor:pointer;
+            margin: auto;
+        }
+        .example-1 .label i{
+            display:block;
+            font-size:42px;
+            padding-bottom:16px
+        }
+
+        .example-1 .label:hover{
+            border:2px solid #063852
+        }
+
     </style>
 
 </head>
@@ -112,24 +139,35 @@
     <div class="column" style="margin-left: 50px; float: left; width: 40%;">
         <p style="font-size: 80px; margin-top: 150px;">GYM</p>
         <p style="font-size: 20px; margin-top: 55px; margin-right: 27px;">Мы специализируемся на обнаружении техники на аэрофотоснимках промышленных объектов, применяя передовые методы обработки изображений и искусственный интеллект.</p>
-        <p><button onclick="topFunction()" class="reset anim-bg-gradient">Попробовать</button></p>
+        <p><button onclick="topFunction()" class="reset anim-bg-gradient" style=" margin-bottom: 500px;">Попробовать</button></p>
     </div>
     <div class="column" style="margin-right: 50px; float: right; width: 53%;">
         <img src="img.png" alt="img" style="width:100%">
     </div>
 </div>
 
+
+
 <div class="row">
-    <div class="column" style="background-color:#bbb; margin-top: 65%;">
+    <div class="column" style="margin-top: 65%;">
         <p style="font-size: 40px; text-align: center;">Загрузите необходимые изображения</p>
+        <div style="width:788px; height:486px; display: block; background-color: #063852; border-radius: 70px; margin:auto;">
+            <div class="example-1">
+                <div class="form-group" >
+                    <label class="label">
+                        <input type="file"/>
+                    </label>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
 <script>
     function topFunction() {
-        document.body.scrollTop = 500;
-        document.documentElement.scrollTop = 500;
+        document.body.scrollTop = 5000;
+        document.documentElement.scrollTop = 5000;
     }
 </script>
 </body>
