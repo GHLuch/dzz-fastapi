@@ -7,6 +7,7 @@
     <style>
 
         html {
+            scroll-behavior: smooth;
             background-color: #010B19;
             color: white;
         }
@@ -42,11 +43,14 @@
         header a {
             padding: 30px;
             font-size: 14px;
+            align-items: center;
+
         }
 
         nav {
             display: flex;
             align-items: center;
+
         }
 
         button {
@@ -147,21 +151,22 @@
 </header>
 
 <div class="row">
-    <div class="column" style="margin-left: 50px; float: left; width: 40%;">
-        <p style="font-size: 80px; margin-top: 150px;">GYM</p>
+    <div class="column" style="margin-left: 50px; float: left; width: 35%;">
+        <p style="font-size: 80px; margin-top: 150px; font-weight: bold;">GYM</p>
         <p style="font-size: 20px; margin-top: 55px; margin-right: 27px;">Мы специализируемся на обнаружении техники на аэрофотоснимках промышленных объектов, применяя передовые методы обработки изображений и искусственный интеллект.</p>
-        <p><button onclick="topFunction()" class="reset anim-bg-gradient" style=" margin-bottom: 500px;">Попробовать</button></p>
+        <p><a href="#suda"><button onclick="topFunction()" class="reset anim-bg-gradient">Попробовать</button></a></p>
     </div>
-    <div class="column" style="margin-right: 50px; float: right; width: 53%;">
-        <img src="img.png" alt="img" style="width:100%">
+    <div class="column" style="margin-right: 50px; float: right; width: 50%;">
+        <img src="img.png" alt="img" style="width:686px; float: right;">
     </div>
 </div>
 
 
 
 <div class="row">
-    <div class="column" style="margin-top: 65%;">
-        <p style="font-size: 40px; text-align: center;">Загрузите необходимые изображения</p>
+    <div class="column" id="suda" style="margin-top: 65%;">
+        <p style="font-size: 40px; text-align: center; margin: auto;">Загрузите необходимые изображения</p>
+
         <div style="width:788px; height:486px; display: block; background-color: #063852; border-radius: 70px; margin:auto;">
             <div class="example-1">
                 <div class="form-group">
@@ -170,6 +175,18 @@
                     </label>
                 </div>
             </div>
+        </div>
+        <div style="width:480px; height:170px; display: block; background-color: #063852; border-radius: 50px; margin: auto; margin-top: 30px; padding: 11px 25px 0 25px">
+            <nav>
+                <p>
+                    <button style=" padding: 12px 20px; margin: 0 20px 30px 0;">Загрузить изображения</button>
+                    <button style=" padding: 12px 65px; margin: 0 20px 0 0;">Очистить</button>
+                </p>
+                <p>
+                    <button style=" padding: 12px 44px; margin: 0 0 30px 0">Выбрать модель</button>
+                    <button style=" padding: 12px 40px; margin: 0 0 0 0 ">Начать обработку</button>
+                </p>
+            </nav>
         </div>
     </div>
 </div>
@@ -186,9 +203,11 @@
 </footer>
 <script>
     function topFunction() {
-        document.body.scrollTop = 5000;
-        document.documentElement.scrollTop = 5000;
+        document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 </body>
 </html>
+
+document.body.scrollTop= 1;
+document.documentElement.scrollTop= 100;
