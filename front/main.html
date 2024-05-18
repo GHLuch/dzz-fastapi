@@ -3,138 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
-
-    <style>
-
-        html {
-            scroll-behavior: smooth;
-            background-color: #010B19;
-            color: white;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Roboto", sans-serif;
-        }
-
-        header {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            background-color: #063852;
-            height: 100px;
-            margin:0 50px 50px;
-            border-radius: 0 0 30px 30px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-
-        }
-
-        header a.logo {
-            font-size: 32px;
-            font-weight: bold;
-            margin-left: 40px;
-        }
-
-        header a {
-            padding: 30px;
-            font-size: 14px;
-            align-items: center;
-
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-
-        }
-
-        button {
-            border: 1px solid white;
-            border-radius: 25px;
-            background-color: #063852;
-            color: white;
-            padding: 12px 24px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .anim-bg-gradient {
-            background: linear-gradient(84.29deg, #FC466B -22.08%, #3F5EFB 97.7%);
-            background-size: 200% 100%;
-            background-position: 100% 0;
-            transition: background-position .5s;
-            border: 0;
-            padding: 20px 101px;
-            color: white;
-            font-size: 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 56px;
-        }
-
-        .anim-bg-gradient:hover {
-            background-position: 0 0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-
-        .row:after {
-            display: table;
-            clear: both;
-        }
-
-
-
-        .example-1 .form-group{
-            padding:1em;margin:1em
-        }
-        .example-1 input[type=file]{
-            outline:0;
-            opacity:0;
-            pointer-events:none;
-            user-select:none
-        }
-        .example-1 .label{
-            width:718px;
-            height:426px;
-            border:2px dashed white;
-            border-radius:50px;
-            display:block;
-            transition:border 300ms ease;
-            cursor:pointer;
-
-        }
-        .example-1 .label i{
-            display:block;
-            font-size:42px;
-            padding-bottom:16px
-        }
-
-        .example-1 .label:hover{
-            border:2px solid #063852
-        }
-
-        footer {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            background-color: #063852;
-            height: 100px;
-            margin:100px 50px 0 50px;
-            border-radius: 30px 30px 0 0;
-        }
-
-    </style>
+    <link rel="stylesheet" href="main_loading_result.css">
 
 </head>
 <body>
@@ -146,68 +15,34 @@
     <nav>
         <a><button>Главная</button></a>
         <a><button>Профиль</button></a>
-        <a style="margin-right: 40px;"><button> Вход </button></a>
+        <a><button> Вход </button></a>
     </nav>
 </header>
 
-<div class="row">
-    <div class="column" style="margin-left: 50px; float: left; width: 35%;">
-        <p style="font-size: 80px; margin-top: 150px; font-weight: bold;">GYM</p>
-        <p style="font-size: 20px; margin-top: 55px; margin-right: 27px;">Мы специализируемся на обнаружении техники на аэрофотоснимках промышленных объектов, применяя передовые методы обработки изображений и искусственный интеллект.</p>
-        <p><a href="#suda"><button onclick="topFunction()" class="reset anim-bg-gradient">Попробовать</button></a></p>
-    </div>
-    <div class="column" style="margin-right: 50px; float: right; width: 50%;">
-        <img src="img.png" alt="img" style="width:686px; float: right;">
-    </div>
-</div>
-
-
-
-<div class="row">
-    <div class="column" id="suda" style="margin-top: 65%;">
-        <p style="font-size: 40px; text-align: center; margin: auto;">Загрузите необходимые изображения</p>
-
-        <div style="width:788px; height:486px; display: block; background-color: #063852; border-radius: 70px; margin:auto;">
-            <div class="example-1">
-                <div class="form-group">
-                    <label class="label" style=" margin: 15px 12px 5px 5px;">
-                        <input type="file"/>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div style="width:480px; height:170px; display: block; background-color: #063852; border-radius: 50px; margin: auto; margin-top: 30px; padding: 11px 25px 0 25px">
-            <nav>
-                <p>
-                    <button style=" padding: 12px 20px; margin: 0 20px 30px 0;">Загрузить изображения</button>
-                    <button style=" padding: 12px 65px; margin: 0 20px 0 0;">Очистить</button>
-                </p>
-                <p>
-                    <button style=" padding: 12px 44px; margin: 0 0 30px 0">Выбрать модель</button>
-                    <button style=" padding: 12px 40px; margin: 0 0 0 0 ">Начать обработку</button>
-                </p>
-            </nav>
-        </div>
-    </div>
-</div>
+<table>
+ <tr>
+     <td class="column-intr">
+         <p class="intr-gym">GYM</p>
+         <p class="intr-text">Мы специализируемся на обнаружении техники на аэрофотоснимках промышленных объектов, применяя передовые методы обработки изображений и искусственный интеллект.</p>
+         <p class="intr-next"><a href="loading.html"><button class="reset anim-bg-gradient">Попробовать</button></a></p>
+     </td>
+     <td class="column-img">
+         <img src="img.png" alt="img" style="width:686px; float: right;">
+     </td>
+ </tr>
+</table>
 
 
 <footer>
     <div>
-        <a style="display: flex; align-items: center; font-size: 20px; margin: 38px 0 38px 50px;"> © 2024 “GYM”</a>
+        <a class="logo-footer"> © 2024 “GYM”</a>
     </div>
     <nav>
-        <img src="img_1.png" alt="img" style="width:134px; height: 67px; background: url(img_2.png); margin-right: 30px;">
-        <img src="img_2.png" alt="img" style="width:70px; height: 67px; background: url(img_1.png); margin-right: 50px;">
+        <img src="img_1.png" alt="img" class="img-1-footer">
+        <img src="img_2.png" alt="img" class="img-2-footer">
     </nav>
 </footer>
-<script>
-    function topFunction() {
-        document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
+
+
 </body>
 </html>
-
-document.body.scrollTop= 1;
-document.documentElement.scrollTop= 100;
