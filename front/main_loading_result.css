@@ -141,17 +141,17 @@ footer {
     margin: 38px 0 38px 50px;
 }
 
-.img-1-footer{
+.img-7-footer{
     width:134px;
     height: 67px;
-    background: url(img_2.png);
+    background: url("image 7.png");
     margin-right: 30px;
 }
 
-.img-2-footer{
+.img-6-footer{
     width:70px;
     height: 67px;
-    background: url(img_1.png);
+    background: url("image 6.png");
     margin-right: 50px;
 }
 
@@ -229,7 +229,7 @@ footer {
     border-radius: 50px;
     margin: auto;
     margin-top: 20px;
-    padding: 30px 138px  30px 138px;
+    padding: 30px 135px  30px 135px;
 }
 
 
@@ -240,7 +240,7 @@ footer {
 
 .result-button-1{background-color: #32CD32; color: #063852; padding: 12px 77px; margin-right: 30px; border: none;}
 .result-button-1::before{background-color: #32CD32; color: #063852; content: "Готово"}
-.result-button-1:hover {background-color: #B00000; color: #D9D9D9; padding: 12px 61px;}
+.result-button-1:hover {background-color: #B00000; color: #D9D9D9; padding: 12px 60px;}
 .result-button-1:hover::before {background-color: #B00000; color: #D9D9D9; content: "Остановить"}
 
 .result-button-2{
@@ -288,13 +288,97 @@ footer {
 .column-img{
     margin-right: 50px;
     float: right;
-    width: 50%;
+    width: 686px;
+}
+
+#drone-anim{
+
+    .img-city{
+        width:686px;
+        float: right;
+    }
+
+    .img-drone{
+        margin-right: 188px;
+        float: right;
+        margin-top: -126px;
+        transition: 0.5s;
+    }
+}
+
+#drone-anim:hover{
+
+    .img-drone{
+        margin-top: -50px;
+        margin-right: 188px;
+        float: right;
+        transition: 0.5s;
+    }
 }
 
 .intr-next{
     margin-bottom: 100px;
 }
 
+.nav-min-770px{
+    display: none;
+}
+
+.prcessed-img-table{
+    width: 935px;
+    margin: 50px auto 100px auto;
+    display: flex;
+    align-items: center;
+
+}
+
+.prcessed-img{
+    width:200px;
+    height:213px;
+    display: block;
+    border: 1px solid white;
+    border-radius: 20px 20px 0 0;
+    margin: 0 15px 0 15px;
+    padding: 0 1px 1px 0;
+}
+
+.prcessed-img-img{
+    width:199px;
+    height:212px;
+    display: block;
+    border-radius: 20px 20px 0 0;
+}
+
+.prcessed-nav{
+    width:200px;
+    height:87px;
+    display: block;
+    background-color: #010B19;
+    border: 1px solid white;
+    border-radius: 0 0 20px 20px;
+    margin: 0 15px 30px 15px;
+    padding: 12px 15px 15px 15px;
+}
+
+.img-5{
+    border: 0 solid white;
+    border-radius: 0;
+    background-color: #010B19;
+    padding: 0;
+    font-size: 14px;
+    cursor: pointer;
+    float: left;
+}
+
+.img-4{
+    border: 0 solid white;
+    border-radius: 0;
+    background-color: #010B19;
+    padding: 0;
+    font-size: 14px;
+    cursor: pointer;
+    float: right;
+}
 @media (max-width: 1280px){
     .column-result-box{
         width:289px;
@@ -419,11 +503,11 @@ footer {
         padding: 12px 10px 10px 10px;
     }
 
-    .img-1-footer{
+    .img-7-footer{
         margin-right: 20px;
     }
 
-    .img-2-footer{
+    .img-6-footer{
         margin-right: 20px;
     }
 
@@ -517,5 +601,21 @@ footer {
         font-size: 24px;
         text-align: center;
         margin: auto;
+    }
+}
+
+@media (max-width: 520px){
+    .img-7-footer{
+        margin-right: 15px;
+    }
+
+    .img-6-footer{
+        margin-right: 15px;
+    }
+
+    .logo-footer{
+        font-size: 14px;
+        margin-left: 15px;
+
     }
 }
