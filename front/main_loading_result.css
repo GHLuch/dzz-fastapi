@@ -254,17 +254,19 @@ footer {
 }
 
 .result-button-4{
-    padding: 12px 59px 12px 20px;
+    padding: 12px 20px 12px 20px;
 }
 
-.result-button-4 div{
-    width: 20.36px;
-    height: 20.36px;
+.result-button-4 canvas{
+    width: 20px;
+    height: 20px;
     border-width: 0 2px 2px 0;
     border-style: solid;
     border-color: #D9D9D9;
     border-radius: 0 0 4px 0;
     transform: rotate(45deg);
+    margin: -5px 6px 0 10px ;
+    align-items: center;
 }
 
 .column-intr{
