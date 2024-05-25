@@ -381,7 +381,7 @@ footer {
     cursor: pointer;
     float: right;
 }
-@media (max-width: 1280px){
+@media (max-width: 1275px){
     .column-result-box{
         width:289px;
         height:272px;
@@ -607,17 +607,24 @@ footer {
 }
 
 @media (max-width: 520px){
-    .img-7-footer{
+.img-7-footer{
         margin-right: 15px;
+        width:114px;
+        height: 57px;
     }
 
     .img-6-footer{
         margin-right: 15px;
+        width:50px;
+        height: 47.86px;
     }
 
     .logo-footer{
         font-size: 14px;
         margin-left: 15px;
+    }
 
+    .prcessed-img-table {
+        width: 232px;
     }
 }
