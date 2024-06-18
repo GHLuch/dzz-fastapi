@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  postgres_db:
+    container_name: dzz_postgres_container_dev
+    image: postgres:15.1
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PSW}
+      PGDATA: "pgdata"
+    volumes:
+      - ./postgres:/postgres
+    ports:
+      - ${DB_PORT}:5432
+    networks:
+      - db_network
+
+
+networks:
+  db_network:
+    driver: bridge
